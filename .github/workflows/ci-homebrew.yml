@@ -49,7 +49,7 @@ jobs:
             release: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Fix homebrew python
         if: matrix.os_name == 'macos' && matrix.os_version == '13'
@@ -159,7 +159,7 @@ jobs:
 
       - name: Setup python
         id: python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
