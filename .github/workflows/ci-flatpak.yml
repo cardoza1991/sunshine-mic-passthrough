@@ -42,13 +42,13 @@ jobs:
           remove-docker-images: 'true'
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
 
       - name: Setup node
         id: node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -60,7 +60,7 @@ jobs:
 
       - name: Setup python
         id: python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -93,7 +93,7 @@ jobs:
         run: cat generated-sources.json
 
       - name: Cache Flatpak build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ./build/.flatpak-builder
           key: flatpak-${{ matrix.arch }}-${{ github.sha }}
@@ -206,7 +206,7 @@ jobs:
           tar -czf ./artifacts/flathub.tar.gz -C ./flathub .
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-Linux-Flatpak-${{ matrix.arch }}
           path: artifacts/
